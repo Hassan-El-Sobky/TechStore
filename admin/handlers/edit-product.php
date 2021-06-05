@@ -24,9 +24,9 @@ if ($request->postHas('submit')) {
     $validator->validate('pieces number', $pieces_no, ['required' , 'numeric']);
     $validator->validate('description', $desc, ['required' , 'str']);
     
-    if ($img['error'] == 0){
-        $validator->validate('image', $img, ['image']);
-    }
+    //if ($img['error'] == 0){
+     //   $validator->validate('image', $img, ['image']);
+  //  }
     
 
     if ($validator->hasErrors()) {
@@ -43,7 +43,7 @@ if ($request->postHas('submit')) {
             $imgName = $file->rename()->upload();
         }
       
-        $pr->update("name = '$name' , `desc` = '$desc' , price = '$price' , pieces_no = '$pieces_no' , cat_id = '$cat_id' , img = '$imgName' " , $id);
+        $pr->update("name = '$name' , `description` = '$desc' , price = '$price' , pieces_no = '$pieces_no' , cat_id = '$cat_id' , img = '$imgName' " , $id);
 
         $session->set('success' , 'profile updated successfully');
         $request->aredirect("products.php");

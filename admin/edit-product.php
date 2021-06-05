@@ -17,14 +17,14 @@ $cats = $c->selectAll("id , name");
 
 $pr = new Product;
 $prod = $pr->selectId($id , " products.name AS prodName , `desc` , cats.name AS catName , img , pieces_no , price , cat_id");
-
+print_r($prod);
 ?>
 
     <div class="container py-5">
         <div class="row">
 
             <div class="col-md-6 offset-md-3">
-                <h3 class="mb-3">Edit Product : <?= $prod['prodName']; ?></h3>
+                <h3 class="mb-3">Edit Product : <?= $prod['name']; ?></h3>
                 <div class="card">
                     <div class="card-body p-5">
                         <form method="POST" action="<?= AURL . "handlers/edit-product.php?" ; ?>" enctype="multipart/form-data">
@@ -33,7 +33,7 @@ $prod = $pr->selectId($id , " products.name AS prodName , `desc` , cats.name AS 
 
                             <div class="form-group">
                               <label>Name</label>
-                              <input type="text" name="name" class="form-control">
+                              <input type="text" name="name" value="<?= $prod['name']; ?>" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -58,7 +58,7 @@ $prod = $pr->selectId($id , " products.name AS prodName , `desc` , cats.name AS 
   
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" name="desc" rows="3"><?= $prod['desc']; ?></textarea>
+                                <textarea class="form-control" name="desc" rows="3"><?= $prod['description']; ?></textarea>
                             </div>
 
                             <div class="md-3 d-flex justify-content-center">

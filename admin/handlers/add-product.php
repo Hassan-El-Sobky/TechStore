@@ -23,7 +23,7 @@ if ($request->postHas('submit')) {
     $validator->validate('price', $price, ['required' , 'numeric']);
     $validator->validate('pieces number', $pieces_no, ['required' , 'numeric']);
     $validator->validate('description', $desc, ['required' , 'str']);
-    $validator->validate('image', $img, ['requiredfile' , 'image']);
+   // $validator->validate('image', $img, ['requiredfile' , 'image']);
 
     if ($validator->hasErrors()) {
         $session->set("errors" , $validator->getErrors());
@@ -36,7 +36,7 @@ if ($request->postHas('submit')) {
   echo $imgUploadName;
         // db query
         $pr = new Product;
-        $pr->insert("name , `desc` , price , pieces_no , img , cat_id" , "'$name' , '$desc' , '$price' , '$pieces_no' , '$imgUploadName' , '$cat_id' ");
+        $pr->insert("name , `description` , price , pieces_no , img , cat_id" , "'$name' , '$desc' , '$price' , '$pieces_no' , '$imgUploadName' , '$cat_id' ");
 
         $session->set('success' , 'Product add successfully');
         $request->aredirect("products.php");
