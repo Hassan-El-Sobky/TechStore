@@ -2,11 +2,11 @@
  namespace TechStore\Classes\Models;
  use  TechStore\Classes\Db;
 
-class OrderDetail extends Db    // Db ال class انا كده بورث من 
+class OrderDetail extends Db    
 {
     public function __construct()
     {
-        $this->table = "orderdetail";
+        $this->table = "ordersdetails";
         $this->connect();
     }
 
